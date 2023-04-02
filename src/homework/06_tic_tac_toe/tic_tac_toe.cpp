@@ -6,6 +6,9 @@
 
 using std::cout; using std::cin; using std::endl;
 
+string tic_tac_toe::get_player() const {return player;}
+
+bool tic_tac_toe::game_over() {return check_board_full();}
 
 void tic_tac_toe::start_game(string first_player)
 {
@@ -51,9 +54,9 @@ void tic_tac_toe::set_next_player()
 
 bool tic_tac_toe::check_board_full() 
 {
-    for (auto peg : pegs) 
+    for (auto pegs : pegs) 
     {
-        if (peg == " ") 
+        if (pegs == " ") 
         {
             return false;
         }
@@ -68,3 +71,4 @@ void tic_tac_toe::clear_board()
         pegs[i] = " ";
     }
 }
+
