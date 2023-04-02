@@ -7,28 +7,35 @@ int main()
 {
     tic_tac_toe game;
     int position;
-    string new_player;
+    string first_player;
     
     auto continue_playing = 'Y';
     
     do
     {
-        cout << "Enter first player (X or O): ";
-        cin >> new_player;
+        while (first_player != "X" && first_player != "O")
+		{
+			cout<<"\nPlease enter X or O: ";
+			cin>>first_player;
+			if(first_player != "X" && first_player != "O")
+			{
+				cout<<"Please enter a valid input: "<<"\n";
+			}
+		}
 
-        game.start_game(new_player);
+        game.start_game(first_player);
 
         while (!game.game_over())
         {
-            cout << "Player " << game.get_player() << ", enter a position for spaces 1 through 9: ";            
+            cout << "\nPlayer " << game.get_player() << ", enter a position for spaces 1 through 9: ";            
             cin >> position;
 
             game.mark_board(position);
             game.display_board();
         }
 
-        cout << "Game over!" << endl;
-        cout << "Do you want to play again? Enter 'Y' for yes or any other key to exit: ";
+        cout << "\nGame over! The winner is player "<<game.get_winner()<<"!\n";
+        cout << "\nDo you want to play again? Enter 'Y' for yes or any other key to exit: ";
         cin >> continue_playing;
        
     }

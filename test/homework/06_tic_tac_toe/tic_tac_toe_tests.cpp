@@ -70,5 +70,120 @@ TEST_CASE("Test if the game is over after every mark board function call")
 
 	instance.mark_board(8);
 	REQUIRE(instance.game_over() == true);
+	REQUIRE(instance.get_winner() == "C");
+}
 
+TEST_CASE("Test first player set to X.")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("X");
+
+	REQUIRE(test_instance.get_player() == "X");
+}
+
+TEST_CASE("Test first player set to O.")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("O");
+
+	REQUIRE(test_instance.get_player() == "O");
+}
+
+TEST_CASE("Test win by first column.")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("X");
+
+	test_instance.mark_board(1);
+	test_instance.mark_board(2);
+	test_instance.mark_board(4);
+	test_instance.mark_board(3);
+	test_instance.mark_board(7);
+	REQUIRE(test_instance.game_over() == true);
+}
+
+TEST_CASE("Test win by second column")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("X");
+
+	test_instance.mark_board(2);
+	test_instance.mark_board(1);
+	test_instance.mark_board(5);
+	test_instance.mark_board(4);
+	test_instance.mark_board(8);
+	REQUIRE(test_instance.game_over() == true);
+}
+TEST_CASE("Test win by third column")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("X");
+
+	test_instance.mark_board(3);
+	test_instance.mark_board(1);
+	test_instance.mark_board(6);
+	test_instance.mark_board(2);
+	test_instance.mark_board(9);
+	REQUIRE(test_instance.game_over() == true);
+}
+
+TEST_CASE("Test win by first row")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("X");
+
+	test_instance.mark_board(1);
+	test_instance.mark_board(4);
+	test_instance.mark_board(2);
+	test_instance.mark_board(5);
+	test_instance.mark_board(3);
+	REQUIRE(test_instance.game_over() == true);
+}
+TEST_CASE("Test win by second row")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("X");
+
+	test_instance.mark_board(4);
+	test_instance.mark_board(2);
+	test_instance.mark_board(5);
+	test_instance.mark_board(1);
+	test_instance.mark_board(6);
+	REQUIRE(test_instance.game_over() == true);
+}
+TEST_CASE("Test win by third row")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("X");
+
+	test_instance.mark_board(7);
+	test_instance.mark_board(1);
+	test_instance.mark_board(8);
+	test_instance.mark_board(2);
+	test_instance.mark_board(9);
+	REQUIRE(test_instance.game_over() == true);
+}
+TEST_CASE("Test win diagonlly from top left")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("X");
+
+	test_instance.mark_board(1);
+	test_instance.mark_board(2);
+	test_instance.mark_board(5);
+	test_instance.mark_board(3);
+	test_instance.mark_board(9);
+	REQUIRE(test_instance.game_over() == true);
+}
+TEST_CASE("Test win diagonlly from bottom left")
+{
+	tic_tac_toe test_instance;
+	test_instance.start_game("X");
+
+	test_instance.mark_board(7);
+	test_instance.mark_board(1);
+	test_instance.mark_board(5);
+	test_instance.mark_board(2);
+	test_instance.mark_board(3);
+	REQUIRE(test_instance.game_over() == true);
 }
