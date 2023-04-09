@@ -8,7 +8,6 @@ int main()
 {
     tic_tac_toe_manager manager;
     tic_tac_toe game;
-    //int position; Moved to manager.cpp for HW 8
     int x, o, t;
     string first_player;
     
@@ -30,12 +29,6 @@ int main()
 
         while (!game.game_over()) 
         {
-            /*cout << "\nPlayer " << game.get_player() << ", enter a position for spaces 1 through 9: "; ***Moved to cpp for HW 8           
-            cin >> position;
-
-            game.mark_board(position);
-            //game.display_board(); ***Removed for HW 8***
-            */
            cin >> game;
            cout << game;
         } 
@@ -55,11 +48,12 @@ int main()
     }
     while (continue_playing == 'Y' || continue_playing == 'y');
 
+    cout<<"\nThanks for playing! Here are the winning games and the players final scores: \n";
     cout<<"\n"<<manager<<"\n";
     manager.get_winner_totals(x, o, t);
     cout<<"X Wins: "<<x<<"\n";
     cout<<"O Wins: "<<o<<"\n";
-    cout<<"Ties: "<<t<<"\n";
+    cout<<"Ties: "<<t<<"\n\n";
 
     return 0;
 }

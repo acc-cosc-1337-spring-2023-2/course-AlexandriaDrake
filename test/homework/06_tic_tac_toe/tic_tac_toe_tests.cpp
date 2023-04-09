@@ -6,7 +6,24 @@
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
+/* Homework 6 Test Cases:
+1)Create an instance of TicTacToe game
+2)Call the start game function with X first player
+3)Call mark board 9 times using numbers 1 to 9 (this test case will eventually be the test for CAT tie case). Positions: 
+1,2,3,4,5,7,6,9,8. 
+4)Check if the game is over after every mark board function call.
+*/
 
+/* Homework 7 Update to Test Case:
+1)Create an instance of TicTacToe game
+2)Call the start game function
+3)Call mark board 9 times using numbers 1 to 9 
+4) Verify the winner is C
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
 TEST_CASE("Test if the game is over after every mark board function call.")
 {
 	tic_tac_toe game;
@@ -40,7 +57,19 @@ TEST_CASE("Test if the game is over after every mark board function call.")
 
 }
 
-TEST_CASE("Test if the game is over after every mark board function call")
+/* Homework 7 Update: 
+Modify this test case to determine if there is a tie
+Test game over if 9 slots are selected.
+1)Create an instance of TicTacToe game
+2)Call the start game function
+3)Call mark board 9 times using numbers 1 to 9 
+4) Verify the winner is C
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
+TEST_CASE("Test if the game is over after every mark board function call - Winner C")
 {
 	tic_tac_toe instance;
 	instance.start_game("X");
@@ -74,6 +103,10 @@ TEST_CASE("Test if the game is over after every mark board function call")
 	REQUIRE(instance.get_winner() == "C");
 }
 
+/* Homework 7
+Create an instance of TicTacToe, 
+call start_game() function with argument X, verify that get_player() returns X
+*/
 TEST_CASE("Test first player set to X.")
 {
 	tic_tac_toe test_instance;
@@ -81,6 +114,10 @@ TEST_CASE("Test first player set to X.")
 
 	REQUIRE(test_instance.get_player() == "X");
 }
+/* Homework 7
+Create an instance of TicTacToe, 
+call start_game() function with argument O, verify that get_player() returns O
+*/
 
 TEST_CASE("Test first player set to O.")
 {
@@ -89,6 +126,18 @@ TEST_CASE("Test first player set to O.")
 
 	REQUIRE(test_instance.get_player() == "O");
 }
+
+/* Homework 7
+Create an instance of TicTacToe, 
+call start_game() function with argument X, 
+set positions for first player X to 1,4,7.  
+Pick other positions for O. 
+Verify that game_over() is true. 
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
 
 TEST_CASE("Test win by first column.")
 {
@@ -111,6 +160,17 @@ TEST_CASE("Test win by first column.")
 	REQUIRE(test_instance.game_over() == true);
 	REQUIRE(test_instance.get_winner() == "X");
 }
+/* Homework 7
+Create an instance of TicTacToe, 
+call start_game() function with argument X, 
+set positions for first player X to 2,5,8.  
+Pick other positions for O. 
+Verify that game_over() is true.
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
 
 TEST_CASE("Test win by second column")
 {
@@ -133,6 +193,18 @@ TEST_CASE("Test win by second column")
 	REQUIRE(test_instance.game_over() == true);
 	REQUIRE(test_instance.get_winner() == "X");
 }
+/* Homework 7
+Create an instance of TicTacToe, 
+call start_game() function with argument X, 
+set positions for first player X to 3,6,9.  
+Pick other positions for O. 
+Verify that game_over() is true.  
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
+
 TEST_CASE("Test win by third column")
 {
 	tic_tac_toe test_instance;
@@ -154,6 +226,17 @@ TEST_CASE("Test win by third column")
 	REQUIRE(test_instance.game_over() == true);
 	REQUIRE(test_instance.get_winner() == "X");
 }
+/* Homework 7
+Create an instance of TicTacToe, 
+call start_game() function with argument X, 
+set positions for first player X to 1,2,3.  
+Pick other positions for O. 
+Verify that game_over() is true.  
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
 
 TEST_CASE("Test win by first row")
 {
@@ -176,6 +259,18 @@ TEST_CASE("Test win by first row")
 	REQUIRE(test_instance.game_over() == true);
 	REQUIRE(test_instance.get_winner() == "X");
 }
+/* Homework 7
+ Create an instance of TicTacToe, 
+call start_game() function with argument X, 
+set positions for first player X to 4,5,6.  
+Pick other positions for O. 
+Verify that game_over() is true.    
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
+
 TEST_CASE("Test win by second row")
 {
 	tic_tac_toe test_instance;
@@ -197,6 +292,18 @@ TEST_CASE("Test win by second row")
 	REQUIRE(test_instance.game_over() == true);
 	REQUIRE(test_instance.get_winner() == "X");
 }
+
+/* Homework 7
+Create an instance of TicTacToe, 
+call start_game() function with argument X,
+ set positions for first player X to  7,8,9.  
+Pick other positions for O. Verify that game_over() is true.  
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
+
 TEST_CASE("Test win by third row")
 {
 	tic_tac_toe test_instance;
@@ -218,7 +325,19 @@ TEST_CASE("Test win by third row")
 	REQUIRE(test_instance.game_over() == true);
 	REQUIRE(test_instance.get_winner() == "X");
 }
-TEST_CASE("Test win diagonlly from top left")
+
+/* Homework 7
+ Create an instance of TicTacToe, 
+call start_game() function with argument X, 
+set positions for first player X to 1,5,9.  
+Pick other positions for O. Verify that game_over() is true.  
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
+
+TEST_CASE("Test win diagonally from top left")
 {
 	tic_tac_toe test_instance;
 	test_instance.start_game("X");
@@ -239,7 +358,20 @@ TEST_CASE("Test win diagonlly from top left")
 	REQUIRE(test_instance.game_over() == true);
 	REQUIRE(test_instance.get_winner() == "X");
 }
-TEST_CASE("Test win diagonlly from bottom left")
+
+/* Homework 7
+Create an instance of TicTacToe, 
+call start_game() function with argument X, 
+set positions for first player X to 7,5,3. 
+ Pick other positions for O. 
+Verify that game_over() is true.  
+*/
+
+/* Homework 8 Update to Test Cases:
+1)add new assertion REQUIRES... to validate that X or O winner
+*/
+
+TEST_CASE("Test win diagonally from bottom left")
 {
 	tic_tac_toe test_instance;
 	test_instance.start_game("X");
@@ -270,7 +402,7 @@ test get winner total for correct tally
 
 TEST_CASE("Test tic_tac_toe_manager") 
 {
-	//Test win diagonlly from bottom left. X Wins 1
+	//Test win diagonally from bottom left. X Wins 1
 
 	tic_tac_toe test_instance;
 	tic_tac_toe_manager manager_instance; 
