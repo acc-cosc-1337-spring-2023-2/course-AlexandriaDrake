@@ -6,7 +6,10 @@
 
 using std::cout; using std::cin; using std::endl;
 
-string tic_tac_toe::get_player() const {return player;}
+string tic_tac_toe::get_player() const 
+{
+    return player;
+}
 
 void tic_tac_toe::start_game(string first_player)
 {
@@ -27,20 +30,52 @@ void tic_tac_toe::mark_board(int position)
     set_next_player();
 }
 
-void tic_tac_toe::display_board() const 
+//void tic_tac_toe::display_board() const ***Removed for HW 8***
+/*  Overload the ostream operator << (cout)  this code will replace display_board function
+    a) In overloaded operator function output the board
+    b) remove the display_board function from your code including from header.*/
+
+std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game)
 {
-    cout << endl;
+    out << endl;
     for (int i = 0; i < 3; i++) 
     {
         for (int j = 0; j < 3; j++) 
         {
-            cout << " " << pegs[i * 3 + j] << " ";
-            if (j < 2) cout << "|";
+            out << " " <<game.pegs[i * 3 + j] << " ";
+            if (j < 2) out << "|";
         }
-        if (i < 2) cout << "\n---+---+---\n";
+        if (i < 2) out << "\n---+---+---\n";
     }
-    cout << endl;
+    out << endl;
+    return out;
 }
+
+/* Overload the istream operator >> (cin) 
+    a) From main.cpp, move the code that capture position including the  the cout<<"Enter position" code
+    b) After capturing position call the mark_board function */
+
+std::istream& operator>>(std::istream& in, tic_tac_toe& game)
+ {
+    int position;
+    while (true)
+        {
+            cout << "\nPlayer " << game.get_player() << ", enter a position for spaces 1 through 9: ";            
+            in >> position;
+            if(position >=1 && position <=9)
+            {
+                break;
+            }
+            else
+            {
+                cout<<"Invalid position. Please select a position 1 through 9: \n";
+            }
+        }
+
+        game.mark_board(position);
+        return in;
+        //game.display_board(); ***Removed for HW 8***
+ }
 
 void tic_tac_toe::set_next_player()
 {
@@ -109,11 +144,11 @@ bool tic_tac_toe::check_row_win()
 {
     for(int i = 0; i <9; i+=3)
     {
-        if(pegs[i] == "O" && pegs[i+1] == "O" && pegs[i+1] == "O")
+        if(pegs[i] == "O" && pegs[i+1] == "O" && pegs[i+2] == "O")
         {
             return true;
         }
-        else if(pegs[i] == "X" && pegs[i+1] == "X" && pegs[i+1] == "X")
+        else if(pegs[i] == "X" && pegs[i+1] == "X" && pegs[i+2] == "X")
         {
             return true;
         }
