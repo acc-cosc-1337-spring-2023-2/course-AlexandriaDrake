@@ -2,20 +2,28 @@
 #include"tic_tac_toe_manager.h"
 #include"tic_tac_toe.h"
 
+/* HW 9 Update: 2. Change save_game TicTacToe parameter to a unique_ptr of TicTacToe reference.
+            a.  In save_game make sure update_winner_count is the first statement (Use -> instead of .  
+            for get_winner).
+            b.  In save_game change games.push_back, add the move statement to game variable.*/
+
 //add the TicTacToe to games vector with push_back, call update winner count pass the winner from TicTacToe to update x, o, or tie totals.
-void tic_tac_toe_manager::save_game(tic_tac_toe b)
+void tic_tac_toe_manager::save_game(unique_ptr<tic_tac_toe>& b)
 {
-    games.push_back(b);
-    update_winner_count(b.get_winner());
+    update_winner_count(b->get_winner());
+    games.push_back(std::move(b));
 }
 
+  /* HW 9 Update: 3. Change the friend function ostream overload code to account for unique pointers.
+     a. Add a reference to the loop auto& game, unique pointers must be referenced..
+     b. Account for dereferencing pointers in the loop block, change game to *game.*/
 //Overload <<-Loop through vector of TicTacToe and call the TicTacToe cout overload.
 
 std::ostream& operator<<(std::ostream& out, const tic_tac_toe_manager& manager)
 {
     for (const auto& game : manager.games)
     {
-        out<<game<<"\n";
+        out<<*game<<"\n";
     }
     return out; 
 }

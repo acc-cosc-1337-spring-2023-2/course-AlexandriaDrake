@@ -1,10 +1,20 @@
 //cpp
 
-#include<tic_tac_toe.h>
-#include<iostream>
-#include<string>
+#include <tic_tac_toe.h>
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
 
 using std::cout; using std::cin; using std::endl;
+
+/*1. Create a constructor with an int parameter named size.
+     a. in the constructor use an initializer list to initialize the vector to 9 or 16 elements
+        HINT(multiply 3 or 4 by itself)
+        Example: SomeConstructor(int s) :some_vector(s*s, " " ){}//this will initialize some_vector to s*s elements of " " */
+        
+tic_tac_toe::tic_tac_toe(int size) : pegs(size*size, " "){}
+
 
 string tic_tac_toe::get_player() const 
 {
@@ -13,13 +23,10 @@ string tic_tac_toe::get_player() const
 
 void tic_tac_toe::start_game(string first_player)
 {
-    while (first_player != "X" && first_player != "O")
+    if (first_player == "X" && first_player == "O")
     {
-        cout<<"Invalid selection. Please enter X or O: ";
-        cin>>first_player;
+         player = first_player;
     }
-
-    player = first_player;
 
     clear_board();
 }
@@ -35,19 +42,30 @@ void tic_tac_toe::mark_board(int position)
     a) In overloaded operator function output the board
     b) remove the display_board function from your code including from header.*/
 
+
 std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game)
 {
-    out << endl;
-    for (int i = 0; i < 3; i++) 
+    out << std::endl;
+    int size = game.size();
+
+    for (int i = 0; i < size; i++) 
     {
-        for (int j = 0; j < 3; j++) 
+        for (int j = 0; j < size; j++) 
         {
-            out << " " <<game.pegs[i * 3 + j] << " ";
-            if (j < 2) out << "|";
+            out << " " << game.pegs[i * size + j] << " ";
+            if (j < size - 1) out << "|";
         }
-        if (i < 2) out << "\n---+---+---\n";
+        if (i < size - 1) 
+        {
+            out << std::endl;
+            for (int k = 0; k < size; k++)
+            {
+                out << "---+";
+            }
+            out << "---" << std::endl;
+        }
     }
-    out << endl;
+    out << std::endl;
     return out;
 }
 
@@ -58,17 +76,18 @@ std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game)
 std::istream& operator>>(std::istream& in, tic_tac_toe& game)
  {
     int position;
+    int board_size = game.pegs.size();
     while (true)
         {
-            cout << "\nPlayer " << game.get_player() << ", enter a position for spaces 1 through 9: ";            
+            cout << "\nPlayer " << game.get_player() << ", enter a position for spaces 1 through "<<board_size<<": ";            
             in >> position;
-            if(position >=1 && position <=9)
+            if(position >=1 && position <= board_size)
             {
                 break;
             }
             else
             {
-                cout<<"Invalid position. Please select a position 1 through 9: \n";
+                cout<<"Invalid position. Please select a position 1 through "<<board_size<<": \n";
             }
         }
 
@@ -87,9 +106,9 @@ void tic_tac_toe::set_next_player()
 
 bool tic_tac_toe::check_board_full() 
 {
-    for (auto peg : pegs) 
+    for (int i = 0; i < pegs.size(); i++) 
     {
-        if (peg == " ") 
+        if (pegs[i] == " ") 
         {
             return false;
         }
@@ -140,56 +159,24 @@ bool tic_tac_toe::game_over()
     }
 }
 
+ /*5. In TicTacToe functions  check_column_win, check_row_win, and check_diagonal_win ,
+    remove code leaving only the statement return false.*/
 bool tic_tac_toe::check_row_win()
 {
-    for(int i = 0; i <9; i+=3)
-    {
-        if(pegs[i] == "O" && pegs[i+1] == "O" && pegs[i+2] == "O")
-        {
-            return true;
-        }
-        else if(pegs[i] == "X" && pegs[i+1] == "X" && pegs[i+2] == "X")
-        {
-            return true;
-        }
-    }
     return false;
 }
 
+ /*5. In TicTacToe functions  check_column_win, check_row_win, and check_diagonal_win ,
+    remove code leaving only the statement return false.*/
 bool tic_tac_toe::check_column_win()
 {
-    for(int i = 0; i <3; i++)
-    {
-        if(pegs[i] == "O" && pegs[i+3] == "O" && pegs[i+6] == "O")
-        {
-            return true;
-        }
-        else if(pegs[i] == "X" && pegs[i+3] == "X" && pegs[i+6] == "X")
-        {
-            return true;
-        }
-    }
     return false;
 }
 
+ /*5. In TicTacToe functions  check_column_win, check_row_win, and check_diagonal_win ,
+    remove code leaving only the statement return false.*/
 bool tic_tac_toe::check_diagonal_win()
 {
-    if (pegs[0] == "X" && pegs[4] == "X" && pegs[8] == "X")
-    {
-        return true;
-    }
-    else if (pegs[6] == "X" && pegs[4] == "X" && pegs[2] == "X")
-    {
-        return true;
-    }
-    else if (pegs[0] == "O" && pegs[4] == "O" && pegs[8] == "O")
-    {
-        return true;
-    }
-        else if (pegs[6] == "O" && pegs[4] == "O" && pegs[2] == "O")
-    {
-        return true;
-    }
     return false;
 }
 
