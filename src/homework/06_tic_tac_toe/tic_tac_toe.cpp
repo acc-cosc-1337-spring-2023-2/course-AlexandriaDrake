@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include <iomanip>
+
 
 using std::cout; using std::cin; using std::endl;
 
@@ -43,7 +43,7 @@ void tic_tac_toe::mark_board(int position)
     b) remove the display_board function from your code including from header.*/
 
 
-std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game)
+std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game) //Pretty horizontal/vertical board won't format correctly. :(
 {
     int row_size = sqrt(game.pegs.size());
     int size = static_cast<int>(game.pegs.size());

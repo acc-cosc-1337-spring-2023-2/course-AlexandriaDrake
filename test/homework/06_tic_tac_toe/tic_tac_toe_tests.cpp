@@ -112,13 +112,13 @@ TEST_CASE("Test if the game is over after every mark board function call - Winne
 	REQUIRE(test_instance->game_over() == true);
 
 	REQUIRE(test_instance->get_winner() == "C");
-;
 }
 
 /* Homework 7
 Create an instance of tic_tac_toe, 
 call start_game() function with argument X, verify that get_player() returns X
 */
+
 TEST_CASE("Test first player set to X.")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe3>();
@@ -126,6 +126,7 @@ TEST_CASE("Test first player set to X.")
 
 	REQUIRE(test_instance->get_player() == "X"); 
 }
+
 /* Homework 7
 Create an instance of tic_tac_toe, 
 call start_game() function with argument O, verify that get_player() returns O
@@ -568,14 +569,8 @@ TEST_CASE("Test game over if 16 slots are selected.")
 	REQUIRE(test_instance->game_over() == true);
 
 	REQUIRE(test_instance->get_winner() == "C");
-
-	/*
-	x|o|x|o 1  2  3  4
-	o|x|x|o 5  6  7  8
-	o|x|o|x 9  10 11 12
-	x|o|x|o
-	*/
 }
+
 TEST_CASE("Test first player set to X 4.")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -583,6 +578,7 @@ TEST_CASE("Test first player set to X 4.")
 
 	REQUIRE(test_instance->get_player() == "X"); 
 }
+
 TEST_CASE("Test first player set to O 4.")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -590,6 +586,7 @@ TEST_CASE("Test first player set to O 4.")
 
 	REQUIRE(test_instance->get_player() == "O"); 
 }
+
 TEST_CASE("Test win by first column 4.")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -618,6 +615,7 @@ TEST_CASE("Test win by first column 4.")
 
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Test win by second column 4")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -646,6 +644,7 @@ TEST_CASE("Test win by second column 4")
 
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Test win by third column 4")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -674,6 +673,7 @@ TEST_CASE("Test win by third column 4")
 	
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Test win by fourth column 4")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -702,6 +702,7 @@ TEST_CASE("Test win by fourth column 4")
 	
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Test win by first row 4")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -730,6 +731,7 @@ TEST_CASE("Test win by first row 4")
 	
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Test win by second row 4")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -758,6 +760,7 @@ TEST_CASE("Test win by second row 4")
 	
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Test win by third row 4")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -786,6 +789,7 @@ TEST_CASE("Test win by third row 4")
 	
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Test win by fourth row 4")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -814,6 +818,7 @@ TEST_CASE("Test win by fourth row 4")
 	
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Test win diagonlly from top left 4")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -842,6 +847,7 @@ TEST_CASE("Test win diagonlly from top left 4")
 	
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Test win diagonlly from bottom left 4")
 {
 	unique_ptr<tic_tac_toe> test_instance = make_unique<tic_tac_toe4>();
@@ -870,6 +876,7 @@ TEST_CASE("Test win diagonlly from bottom left 4")
 	
 	REQUIRE(test_instance->get_winner() == "X");
 }
+
 TEST_CASE("Verify that that x_win, o_win, and ties tally correctly 4")
 {
 	tic_tac_toe_manager manager_instance;
