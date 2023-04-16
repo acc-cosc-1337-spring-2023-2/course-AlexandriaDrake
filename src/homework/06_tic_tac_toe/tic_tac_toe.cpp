@@ -23,7 +23,7 @@ string tic_tac_toe::get_player() const
 
 void tic_tac_toe::start_game(string first_player)
 {
-    if (first_player == "X" && first_player == "O")
+    if (first_player == "X" || first_player == "O")
     {
          player = first_player;
     }
@@ -45,27 +45,19 @@ void tic_tac_toe::mark_board(int position)
 
 std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game)
 {
-    out << std::endl;
-    int size = game.size();
-
-    for (int i = 0; i < size; i++) 
+    int row_size = sqrt(game.pegs.size());
+    int size = static_cast<int>(game.pegs.size());
+    for (int i = 0; i < size; i++)
     {
-        for (int j = 0; j < size; j++) 
+        out << game.pegs[i];
+        if ((i + 1) % row_size == 0) 
         {
-            out << " " << game.pegs[i * size + j] << " ";
-            if (j < size - 1) out << "|";
-        }
-        if (i < size - 1) 
-        {
-            out << std::endl;
-            for (int k = 0; k < size; k++)
-            {
-                out << "---+";
-            }
-            out << "---" << std::endl;
+            out << "\n";
+        } else {
+            out << "|";
         }
     }
-    out << std::endl;
+    out<<"\n";
     return out;
 }
 
