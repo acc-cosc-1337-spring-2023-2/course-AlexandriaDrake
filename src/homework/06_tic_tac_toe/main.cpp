@@ -21,7 +21,8 @@ using std::cout; using std::cin; using std::endl; using std::make_unique;
 
 int main() 
 {
-    tic_tac_toe_manager manager;
+    tic_tac_toe_data data;
+    tic_tac_toe_manager manager(data);
     unique_ptr<tic_tac_toe>game;
     int x, o, t;
     int size;
