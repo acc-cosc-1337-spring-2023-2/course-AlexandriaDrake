@@ -1,5 +1,6 @@
 //h
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_data.h"
 #include <vector>
 #include <iostream>
 #include <memory>
@@ -29,9 +30,13 @@ class tic_tac_toe_manager
         int x_win = 0;
         int o_win = 0;
         int ties = 0;
-        void update_winner_count(std::string);
+        void update_winner_count(string winner);
+        tic_tac_toe_data data; //  a) Add a TicTacToeData private variable name it data.
 
     public:
+        tic_tac_toe_manager() = default; // b) Add constructor TicTacToeManager() = default;
+        tic_tac_toe_manager(tic_tac_toe_data& data);
+        ~tic_tac_toe_manager();
         void get_winner_totals(int& x, int& o, int& t);
         //2. Change save_game TicTacToe parameter to a unique_ptr of TicTacToe reference.
         void save_game(unique_ptr<tic_tac_toe>& b);

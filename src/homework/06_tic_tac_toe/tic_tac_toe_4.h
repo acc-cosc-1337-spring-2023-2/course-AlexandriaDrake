@@ -9,6 +9,9 @@ class tic_tac_toe4 : public tic_tac_toe
         /*2. Create a default constructor (no parameters).
         a. Create an initializer to initialize TicTacToe with a value of 4.*/
         tic_tac_toe4() : tic_tac_toe(4){}
+        /*Homework 10 Update  a) in .h file add a new constructor TicTacToe4(std::vector<string> p, string winner) //more code here
+        Don’t forget to pass p and winner to TicTacToe via constructor*/
+        tic_tac_toe4(vector<string> p, string winner) : tic_tac_toe(p, winner) {}
     
     private:
 

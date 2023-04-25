@@ -2,6 +2,25 @@
 #include"tic_tac_toe_manager.h"
 #include"tic_tac_toe.h"
 
+/* Homework 10 Update: c) Add a TicTacToeManager constructor with TicTacToeData reference parameter. (Read data from file)
+ Assign constructor argument to private variable data.
+In the .cpp file write constructor code to initialize private games vector by calling TicTacToeData get_games function
+Loop through games,  Write code to update the winner counts.
+*/
+tic_tac_toe_manager::tic_tac_toe_manager(tic_tac_toe_data& data) : data(data) 
+{
+    games = data.get_games();
+    for (const auto& game : games)
+    {
+        update_winner_count(game->get_winner());
+    }
+}
+
+tic_tac_toe_manager::~tic_tac_toe_manager()
+{
+    data.save_games(games);
+}
+
 /* HW 9 Update: 2. Change save_game TicTacToe parameter to a unique_ptr of TicTacToe reference.
             a.  In save_game make sure update_winner_count is the first statement (Use -> instead of .  
             for get_winner).
@@ -55,5 +74,5 @@ void tic_tac_toe_manager::update_winner_count(string winner)
     {
         ties++;
     }
-
 }
+

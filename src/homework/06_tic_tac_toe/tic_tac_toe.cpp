@@ -8,6 +8,9 @@
 
 using std::cout; using std::cin; using std::endl;
 
+//Homework 10 Update
+tic_tac_toe::tic_tac_toe(vector<string> p, string win):pegs(p), winner(win){}
+
 /*1. Create a constructor with an int parameter named size.
      a. in the constructor use an initializer list to initialize the vector to 9 or 16 elements
         HINT(multiply 3 or 4 by itself)
@@ -15,6 +18,10 @@ using std::cout; using std::cin; using std::endl;
         
 tic_tac_toe::tic_tac_toe(int size) : pegs(size*size, " "){}
 
+vector<string>tic_tac_toe::get_pegs() const
+{
+    return pegs;
+}
 
 string tic_tac_toe::get_player() const 
 {
